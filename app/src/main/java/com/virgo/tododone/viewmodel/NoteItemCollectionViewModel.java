@@ -16,43 +16,44 @@
  *
  */
 
-package roomdemo.wiseass.com.roomdemo.viewmodel;
+package com.virgo.tododone.viewmodel;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
 
+import com.virgo.tododone.data.NoteItem;
+import com.virgo.tododone.data.NoteItemRepository;
+
 import java.util.List;
 
-import roomdemo.wiseass.com.roomdemo.data.ListItem;
-import roomdemo.wiseass.com.roomdemo.data.ListItemRepository;
 
 /**
  * Created by R_KAY on 8/3/2017.
  */
 
-public class ListItemCollectionViewModel extends ViewModel {
+public class NoteItemCollectionViewModel extends ViewModel {
 
-    private ListItemRepository repository;
+    private NoteItemRepository repository;
 
-    ListItemCollectionViewModel(ListItemRepository repository) {
+    public NoteItemCollectionViewModel(NoteItemRepository repository) {
         this.repository = repository;
     }
 
-    public LiveData<List<ListItem>> getListItems() {
-        return repository.getListOfData();
+    public LiveData<List<NoteItem>> getListItems() {
+        return repository.getNoteList();
     }
 
-    public void deleteListItem(ListItem listItem) {
+    public void deleteListItem(NoteItem listItem) {
         DeleteItemTask deleteItemTask = new DeleteItemTask();
         deleteItemTask.execute(listItem);
     }
 
-    private class DeleteItemTask extends AsyncTask<ListItem, Void, Void> {
+    private class DeleteItemTask extends AsyncTask<NoteItem, Void, Void> {
 
         @Override
-        protected Void doInBackground(ListItem... item) {
-            repository.deleteListItem(item[0]);
+        protected Void doInBackground(NoteItem... item) {
+            //repository.deleteListItem(item[0]);
             return null;
         }
     }

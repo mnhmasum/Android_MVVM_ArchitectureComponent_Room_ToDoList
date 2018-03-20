@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ToDoDone.iml" filepath="$PROJECT_DIR$/ToDoDone.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todolist-android-architecture-component.iml" filepath="$PROJECT_DIR$/todolist-android-architecture-component.iml" />
     </modules>
   </component>
 </project>

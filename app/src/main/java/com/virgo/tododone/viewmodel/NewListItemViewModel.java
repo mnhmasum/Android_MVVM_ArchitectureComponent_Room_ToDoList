@@ -16,13 +16,14 @@
  *
  */
 
-package roomdemo.wiseass.com.roomdemo.viewmodel;
+package com.virgo.tododone.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
 
-import roomdemo.wiseass.com.roomdemo.data.ListItem;
-import roomdemo.wiseass.com.roomdemo.data.ListItemRepository;
+import com.virgo.tododone.data.NoteItem;
+import com.virgo.tododone.data.NoteItemRepository;
+
 
 /**
  * Created by R_KAY on 8/11/2017.
@@ -30,23 +31,23 @@ import roomdemo.wiseass.com.roomdemo.data.ListItemRepository;
 
 public class NewListItemViewModel extends ViewModel {
 
-    private ListItemRepository repository;
+    private NoteItemRepository repository;
 
-    NewListItemViewModel(ListItemRepository repository) {
+    public NewListItemViewModel(NoteItemRepository repository) {
         this.repository = repository;
     }
 
     /**
      * Attach our LiveData to the Database
      */
-    public void addNewItemToDatabase(ListItem listItem){
+    public void addNewItemToDatabase(NoteItem listItem){
         new AddItemTask().execute(listItem);
     }
 
-    private class AddItemTask extends AsyncTask<ListItem, Void, Void> {
+    private class AddItemTask extends AsyncTask<NoteItem, Void, Void> {
 
         @Override
-        protected Void doInBackground(ListItem... item) {
+        protected Void doInBackground(NoteItem... item) {
             repository.createNewListItem(item[0]);
             return null;
         }

@@ -31,6 +31,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.textViewTaskName.setText(taskList.get(position).getTaskName());
         holder.textViewTime.setText(taskList.get(position).getTaskCreatedTime());
+        holder.textViewTaskName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override

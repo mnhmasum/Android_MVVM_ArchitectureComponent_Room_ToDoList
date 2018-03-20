@@ -16,39 +16,35 @@
  *
  */
 
-package roomdemo.wiseass.com.roomdemo.viewmodel;
+package com.virgo.tododone.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import com.virgo.tododone.data.NoteItemRepository;
 
-import roomdemo.wiseass.com.roomdemo.data.ListItemRepository;
 
 /**
  * Created by R_KAY on 8/17/2017.
  */
-@Singleton
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
-    private final ListItemRepository repository;
+    private final NoteItemRepository repository;
 
-    @Inject
-    public CustomViewModelFactory(ListItemRepository repository) {
+    public CustomViewModelFactory(NoteItemRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(ListItemCollectionViewModel.class))
-            return (T) new ListItemCollectionViewModel(repository);
+        if (modelClass.isAssignableFrom(NoteItemCollectionViewModel.class))
+            return (T) new NoteItemCollectionViewModel(repository);
 
-        else if (modelClass.isAssignableFrom(ListItemViewModel.class))
+      /*  else if (modelClass.isAssignableFrom(ListItemViewModel.class))
             return (T) new ListItemViewModel(repository);
 
         else if (modelClass.isAssignableFrom(NewListItemViewModel.class))
             return (T) new NewListItemViewModel(repository);
-
+*/
         else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }
