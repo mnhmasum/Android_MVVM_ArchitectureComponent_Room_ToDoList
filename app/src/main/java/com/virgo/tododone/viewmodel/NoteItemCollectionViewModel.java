@@ -53,7 +53,7 @@ public class NoteItemCollectionViewModel extends ViewModel {
 
         @Override
         protected Void doInBackground(NoteItem... item) {
-            //repository.deleteListItem(item[0]);
+            repository.deleteListItem(item[0]);
             return null;
         }
     }

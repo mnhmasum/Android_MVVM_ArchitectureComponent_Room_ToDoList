@@ -22,4 +22,8 @@ public class NoteItemRepository {
     public Long createNewListItem(NoteItem listItem){
         return listItemDao.insertListItem(listItem);
     }
+
+    public void deleteListItem(NoteItem listItem){
+        listItemDao.deleteListItem(listItem);
+    }
 }
