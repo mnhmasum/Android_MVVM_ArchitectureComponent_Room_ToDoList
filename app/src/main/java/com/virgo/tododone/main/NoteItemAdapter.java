@@ -1,15 +1,16 @@
-package com.virgo.tododone;
+package com.virgo.tododone.main;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.virgo.tododone.data.NoteItem;
-import com.virgo.tododone.main.MainActivity;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class NoteItemAdapter extends RecyclerView.Adapter<NoteItemAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_task_name, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_note_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -38,10 +39,21 @@ public class NoteItemAdapter extends RecyclerView.Adapter<NoteItemAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.textViewTaskName.setText(noteItems.get(position).getNoteBody());
         holder.textViewTime.setText(noteItems.get(position).getCreatedDate());
-        holder.textViewTaskName.setOnClickListener(new View.OnClickListener() {
+        holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) context).deleteData(noteItems.get(position));
+                new AlertDialog.Builder(context)
+                    .setTitle("Delete")
+                    .setMessage("Do you want to delete now?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        ((MainActivity) context).deleteData(noteItems.get(position));
+
+                        }
+                    })
+                    .setNegativeButton("NO", null).show();
+
             }
         });
     }
@@ -53,11 +65,13 @@ public class NoteItemAdapter extends RecyclerView.Adapter<NoteItemAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewTaskName, textViewTime;
+        public ImageView imageViewDelete;
 
         public MyViewHolder(View view) {
             super(view);
             textViewTaskName = (TextView) view.findViewById(R.id.textViewTaskName);
             textViewTime = (TextView) view.findViewById(R.id.textViewTime);
+            imageViewDelete = (ImageView) view.findViewById(R.id.imageViewDelete);
         }
     }
 

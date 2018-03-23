@@ -25,12 +25,12 @@ import com.virgo.tododone.data.NoteItemRepository;
 
 
 /**
- * Created by R_KAY on 8/17/2017.
+ * Created by masum on 8/17/2017.
  */
-public class CustomViewModelFactory implements ViewModelProvider.Factory {
+public class ApplicationViewModelFactory implements ViewModelProvider.Factory {
     private final NoteItemRepository repository;
 
-    public CustomViewModelFactory(NoteItemRepository repository) {
+    public ApplicationViewModelFactory(NoteItemRepository repository) {
         this.repository = repository;
     }
 
@@ -39,12 +39,9 @@ public class CustomViewModelFactory implements ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(NoteItemCollectionViewModel.class))
             return (T) new NoteItemCollectionViewModel(repository);
 
-      /*  else if (modelClass.isAssignableFrom(ListItemViewModel.class))
-            return (T) new ListItemViewModel(repository);
-
         else if (modelClass.isAssignableFrom(NewListItemViewModel.class))
             return (T) new NewListItemViewModel(repository);
-*/
+
         else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }

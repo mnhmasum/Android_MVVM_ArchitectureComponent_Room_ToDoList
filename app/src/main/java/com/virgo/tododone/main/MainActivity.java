@@ -15,11 +15,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.virgo.tododone.NoteItemAdapter;
 import com.virgo.tododone.data.NoteItem;
 import com.virgo.tododone.data.NoteItemDatabase;
 import com.virgo.tododone.data.NoteItemRepository;
-import com.virgo.tododone.viewmodel.CustomViewModelFactory;
+import com.virgo.tododone.viewmodel.ApplicationViewModelFactory;
 import com.virgo.tododone.viewmodel.NewListItemViewModel;
 import com.virgo.tododone.viewmodel.NoteItemCollectionViewModel;
 
@@ -64,19 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
         final NoteItemRepository noteItemRepository = new NoteItemRepository(database.noteItemDao());
 
-        viewModelFactory = new CustomViewModelFactory(noteItemRepository);
-
-        noteItemCollectionViewModel = new NoteItemCollectionViewModel(noteItemRepository);
-
-        newListItemViewModel = new NewListItemViewModel(noteItemRepository);
+        viewModelFactory = new ApplicationViewModelFactory(noteItemRepository);
 
 
-
-        /*final NoteItemCollectionViewModel noteItemCollectionViewModel =
-                ViewModelProviders.of(this, viewModelFactory)
-                        .get(NoteItemCollectionViewModel.class);*/
+        noteItemCollectionViewModel = ViewModelProviders.of(this,
+                viewModelFactory).get(NoteItemCollectionViewModel.class);
 
 
+        newListItemViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(NewListItemViewModel.class);
 
 
         final EditText editTextTaskName = (EditText) findViewById(R.id.editTextTaskName);
