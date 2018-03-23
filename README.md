@@ -2,4 +2,4 @@
 This is a simple android ToDo List example using Android Architecture Components, Room, LiveData with MVVM 
 
 
-![](https://i.imgur.com/kFJv18R.png)
+![](https://i.imgur.com/kFJv18R.png|width=100)
