@@ -19,7 +19,7 @@ import com.virgo.tododone.data.NoteItem;
 import com.virgo.tododone.data.NoteItemDatabase;
 import com.virgo.tododone.data.NoteItemRepository;
 import com.virgo.tododone.viewmodel.ApplicationViewModelFactory;
-import com.virgo.tododone.viewmodel.NewListItemViewModel;
+import com.virgo.tododone.viewmodel.AddNewListItemViewModel;
 import com.virgo.tododone.viewmodel.NoteItemCollectionViewModel;
 
 import java.text.DateFormat;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private List<NoteItem> noteItems = new ArrayList<>();
     private NoteItemAdapter mAdapter;
 
-    private NewListItemViewModel newListItemViewModel;
+    private AddNewListItemViewModel newListItemViewModel;
     private NoteItemCollectionViewModel noteItemCollectionViewModel;
 
     ViewModelProvider.Factory viewModelFactory;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         newListItemViewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(NewListItemViewModel.class);
+                .get(AddNewListItemViewModel.class);
 
 
         final EditText editTextTaskName = (EditText) findViewById(R.id.editTextTaskName);

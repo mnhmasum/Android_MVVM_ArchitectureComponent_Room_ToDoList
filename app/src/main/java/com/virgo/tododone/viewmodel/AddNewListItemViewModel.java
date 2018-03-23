@@ -26,14 +26,14 @@ import com.virgo.tododone.data.NoteItemRepository;
 
 
 /**
- * Created by R_KAY on 8/11/2017.
+ * Created by Masum on 8/11/2017.
  */
 
-public class NewListItemViewModel extends ViewModel {
+public class AddNewListItemViewModel extends ViewModel {
 
     private NoteItemRepository repository;
 
-    public NewListItemViewModel(NoteItemRepository repository) {
+    public AddNewListItemViewModel(NoteItemRepository repository) {
         this.repository = repository;
     }
 

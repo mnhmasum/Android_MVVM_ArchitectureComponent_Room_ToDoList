@@ -29,7 +29,7 @@ import java.util.List;
 
 
 /**
- * Created by R_KAY on 8/3/2017.
+ * Created by Masum on 8/3/2017.
  */
 
 public class NoteItemCollectionViewModel extends ViewModel {

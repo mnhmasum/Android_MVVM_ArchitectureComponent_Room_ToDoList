@@ -39,8 +39,8 @@ public class ApplicationViewModelFactory implements ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(NoteItemCollectionViewModel.class))
             return (T) new NoteItemCollectionViewModel(repository);
 
-        else if (modelClass.isAssignableFrom(NewListItemViewModel.class))
-            return (T) new NewListItemViewModel(repository);
+        else if (modelClass.isAssignableFrom(AddNewListItemViewModel.class))
+            return (T) new AddNewListItemViewModel(repository);
 
         else {
             throw new IllegalArgumentException("ViewModel Not Found");
